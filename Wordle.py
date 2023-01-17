@@ -36,7 +36,7 @@ def attempt(attempt_number, wordle_word):
     print_list(display_word)
     count = 0
     for i in range(0, 5):
-        if input_one[i] == wordle_word[i]:
+        if input_one_final[i] == wordle_word[i]:
             count += 1
     if count == 5:
         print("Congrats! You did it!")
@@ -45,6 +45,10 @@ def attempt(attempt_number, wordle_word):
     
 
 print("Hello and welcome to Wordle")
+print("After you input, you'll see the word repeated back.")
+print("CAPITAL letters means that letter appears in the word.")
+print("|C| |A| |P| |I| |T| |A| |L| letters surrounded by lines mean that letter appears in the word at that location.")
+print("Good Luck!")
 
 with open('five_letter_words.txt', 'r') as file:
     words_string = file.read()
@@ -52,7 +56,7 @@ with open('five_letter_words.txt', 'r') as file:
 words_list = words_string.split()
 
 wordle_word = words_list[random.randint(0, len(words_list))]
-
+print("***DEBUG*** Answer: {}".format(wordle_word))
 wordle_chars = list(wordle_word)
 wordle_response = ["[]", "[]", "[]", "[]", "[]"]
 
@@ -60,3 +64,4 @@ for i in range(1, 7):
     attempt(i, wordle_chars)
     
 print("Sorry, you lost :(")
+print("The answer was {}".format(wordle_word))
